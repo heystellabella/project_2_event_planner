@@ -37,45 +37,49 @@ def about():
 def create_event():
     return render_template('create_event.html')
 
-@app.route('/create_event_action', methods=['GET','POST'])
+@app.route('/create_event_action', methods=['POST'])
 def create_event_action():
-    # event_name = request.form.get('event_name')
-    # date = request.form.get('date')
-    # start_time = request.form.get('start_time')
-    # end_time = request.form.get('end_time')
-    # description = request.form.get('description')
-    # image_url = request.form.get('image_url')
-    # invite_list = request.form.get('invite_list')
-    event_name = request.form['event_name']
-    date = request.form['date']
-    start_time = request.form['start_time']
-    end_time = request.form['end_time']
-    description = request.form['description']
-    image_url = request.form['image_url']
-    invite_list = request.form['invite_list']
+    event_name = request.form.get('event_name')
+    date = request.form.get('date')
+    start_time = request.form.get('start_time')
+    end_time = request.form.get('end_time')
+    description = request.form.get('description')
+    image_url = request.form.get('image_url')
+    invite_list = request.form.get('invite_list')
+    # event_name = request.form['event_name']
+    # date = request.form['date']
+    # start_time = request.form['start_time']
+    # end_time = request.form['end_time']
+    # description = request.form['description']
+    # image_url = request.form['image_url']
+    # invite_list = request.form['invite_list']
 
     insert_event(event_name, date, start_time, end_time, description, image_url, invite_list)
 
-    new_event_id = sql_select('SELECT count(event_id) FROM events')[0][0]
+    new_event_id_list = sql_select('SELECT event_id FROM events')
+    new_event_id = sql_select('SELECT event_id FROM events')[-1][0]
+    print(f'NEW EVENT ID LIST = {new_event_id_list}')
     print(f'NEW EVENT ID = {new_event_id}')
+    print(f'NEW EVENT ID = {type(new_event_id)}')
     return redirect(f'/event_page/{new_event_id}')
 
 @app.route('/event_page/<event_id>')
 def event_page(event_id):
     event_name, image_url, description, date, start_time, end_time, invite_list = sql_select_fetchone('SELECT event_name, image_url, description, date, start_time, end_time, invite_list from events where event_id = %s', [event_id])
 
-    return render_template('event_page.html',event_name = event_name, image_url=image_url, description=description, date=date, start_time = start_time, end_time = end_time, invite_list = invite_list )
+    return render_template('event_page.html',event_name = event_name, image_url=image_url, description=description, date=date, start_time = start_time, end_time = end_time, invite_list = invite_list, event_id=event_id )
 
 @app.route('/random_event')
 def random_event_action():
     #number of events is a list[] containing a tuple()
-    number_of_events_result = sql_select('SELECT count(event_id) FROM events')
+    number_of_events_result = sql_select('SELECT event_id FROM events')
 
-    number_of_events = number_of_events_result[0][0]
-    print(number_of_events)
-    print(type(number_of_events))
+    # finds a random index in the list of event id's
+    random_event_id_index = random.randint(1,len(number_of_events_result))
 
-    random_event_id = random.randint(1,number_of_events)
+    # returns the event_id of the tuple in that random index
+    random_event_id = number_of_events_result[random_event_id_index][0]
+
     return redirect(f'/event_page/{random_event_id}')
 
 @app.route('/remove_event/<event_id>')
