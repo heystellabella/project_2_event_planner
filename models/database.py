@@ -34,9 +34,21 @@ def sql_select_action(sql_query, params = []):
 
 # SQL TO INSERT NEW EVENTS:
 
-def insert_event(event_name, date, start_time, end_time, description, image_url, invite_list):
+def insert_event(event_name, date, start_time, end_time, description, image_url):
     
-    return sql_select_action('INSERT INTO events (event_name, date, start_time, end_time, description, image_url, invite_list) VALUES (%s, %s, %s, %s, %s, %s, %s)', [event_name, date, start_time, end_time, description, image_url, invite_list])
+    return sql_select_action('INSERT INTO events (event_name, date, start_time, end_time, description, image_url) VALUES (%s, %s, %s, %s, %s, %s)', [event_name, date, start_time, end_time, description, image_url])
+
+# def insert_invitee(event_id, username):
+#     return sql_select_action('UPDATE invite_list SET user_name = %s WHERE event_id = %s', [username, event_id])
+
+def insert_invitee(event_id, user_id):
+    return sql_select_action('INSERT INTO invite_list (event_id, user_id) VALUES (%s, %s)', [event_id, user_id])
+
+def insert_user(username):
+    return sql_select_action('INSERT INTO users (username) VALUES (%s)', [username])
 
 def delete_event(event_id):
     return sql_select_action('DELETE FROM events where event_id = %s', [event_id])
+
+def delete_invitee(event_id):
+    return sql_select_action('DELETE FROM invite_list where event_id = %s', [event_id])
