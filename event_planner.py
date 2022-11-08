@@ -97,7 +97,17 @@ def create_event_action():
 def event_page(event_id):
     event_name, image_url, description, date, start_time, end_time = sql_select_fetchone('SELECT event_name, image_url, description, date, start_time, end_time from events where event_id = %s', [event_id])
 
-    return render_template('event_page.html',event_name = event_name, image_url=image_url, description=description, date=date, start_time = start_time, end_time = end_time, event_id=event_id )
+    # get invite list - list of tuples
+    invite_list = sql_select('SELECT username FROM users INNER JOIN invite_list ON users.user_id = invite_list.user_id WHERE event_id = %s', [event_id])
+
+    names = []
+
+    for row in invite_list:
+        invitee_name = row
+        print(invitee_name[0])
+        names.append(invitee_name[0])
+    
+    return render_template('event_page.html',event_name = event_name, image_url=image_url, description=description, date=date, start_time = start_time, end_time = end_time, event_id=event_id, names = names)
 
 @app.route('/random_event')
 def random_event_action():

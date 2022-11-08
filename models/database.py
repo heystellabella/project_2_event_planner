@@ -33,13 +33,9 @@ def sql_select_action(sql_query, params = []):
     return
 
 # SQL TO INSERT NEW EVENTS:
-
 def insert_event(event_name, date, start_time, end_time, description, image_url):
     
     return sql_select_action('INSERT INTO events (event_name, date, start_time, end_time, description, image_url) VALUES (%s, %s, %s, %s, %s, %s)', [event_name, date, start_time, end_time, description, image_url])
-
-# def insert_invitee(event_id, username):
-#     return sql_select_action('UPDATE invite_list SET user_name = %s WHERE event_id = %s', [username, event_id])
 
 def insert_invitee(event_id, user_id):
     return sql_select_action('INSERT INTO invite_list (event_id, user_id) VALUES (%s, %s)', [event_id, user_id])
