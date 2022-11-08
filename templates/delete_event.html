@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <h1>Are you sure you want to delete the event: {{event_name[0][0]}}</h1> 
     <form method="POST" action="/remove_event_action">
         <input type="hidden" name="event_id" value={{event_id}}>
-        <a href="/">No</a>
         <input type="submit" value="Delete">
+    </form>
+    <form method="GET" action="/">
+        <input type="submit" value="Home">
     </form>
 </body>
 </html>

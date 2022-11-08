@@ -1,11 +1,3 @@
-from crypt import methods
-from distutils.log import debug
-from pydoc import describe
-from symbol import star_expr
-from tkinter.messagebox import RETRY
-from urllib import request, response
-import urllib.request as urllib
-from socket import IP_MAX_MEMBERSHIPS
 from flask import Flask, render_template, redirect, request
 
 from models.database import insert_invitee, sql_select

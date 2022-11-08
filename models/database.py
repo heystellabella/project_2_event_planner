@@ -1,8 +1,11 @@
 import psycopg2
 
+import os
+DB_URL = os.environ.get('DATABSE_URL', 'dbname=event_db')
+
 # SQL SELECT FOR RETURNING SOMETHING
 def sql_select(sql_query, params = []):
-    conn = psycopg2.connect('dbname=event_db')
+    conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
     cur.execute(sql_query, params)
     # storing the fetched data in a variable so you can still close the connection and cursor within the function
@@ -12,7 +15,7 @@ def sql_select(sql_query, params = []):
     return result
 
 def sql_select_fetchone(sql_query, params = []):
-    conn = psycopg2.connect('dbname=event_db')
+    conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
     cur.execute(sql_query, params)
     # storing the fetched data in a variable so you can still close the connection and cursor within the function
@@ -23,7 +26,7 @@ def sql_select_fetchone(sql_query, params = []):
 
 # SQL SELECT FOR INSERTING OR UPDATING
 def sql_select_action(sql_query, params = []):
-    conn = psycopg2.connect('dbname=event_db')
+    conn = psycopg2.connect(DB_URL)
     cur = conn.cursor()
     cur.execute(sql_query, params)
     # storing the fetched data in a variable so you can still close the connection and cursor within the function
