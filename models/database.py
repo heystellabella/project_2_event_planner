@@ -1,7 +1,7 @@
 import psycopg2
 
 import os
-DB_URL = os.environ.get('DATABSE_URL', 'dbname=event_db')
+DB_URL = os.environ.get('DATABASE_URL', 'dbname=event_db')
 
 # SQL SELECT FOR RETURNING SOMETHING
 def sql_select(sql_query, params = []):
