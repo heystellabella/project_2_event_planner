@@ -5,19 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Planner!</title>
-    <!-- <link rel="/static/style.css"> -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
 </head>
 <body>
-   <h1>Event Planner!</h1> 
-   <a href="/about">About</a>
+   <h1>Stella's Event Planner</h1> 
+   <a href="/">Home</a>
    <a href="/create_event">Create an event</a>
    <a href="/random_event">Random Event</a>
+   <a href="/about">About</a>
    <h3>Upcoming Events</h3>
    <p>{% for event_id, event_name, image_url, description, date, start_time, end_time in event%}
         <h2><a href="/event_page/{{event_id}}">{{event_name}}</a></h2>
-        <br>
-        <p>{{date}} {{start_time}} until {{end_time}}</p>
+
+        <p>This event occurs on {{date}} {{start_time}} until {{end_time}}</p>
         <img src={{image_url}}>
         <p>{{description}}</p>
     {%endfor%}

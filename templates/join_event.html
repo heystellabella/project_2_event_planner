@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Join an Event</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+    <a href="/">Home</a>
+    <a href="/create_event">Create an event</a>
+    <a href="/random_event">Random Event</a>
+    <a href="/about">About</a>
     <h1>Join Event: {{event_name}}</h1>
     <form method="POST" action="/join_event_action">
         <input type="hidden" name="event_id" value={{event_id}}>

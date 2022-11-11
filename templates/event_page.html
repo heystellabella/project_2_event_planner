@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name of event here</title>
+    <title>{{event_name}}</title>
+    <link rel="stylesheet" href="/static/style.css">    
 </head>
 <body>
-    <a href="/about">About</a>
+    <h1>Stella's Event Planner</h1> 
+    <a href="/">Home</a>
     <a href="/create_event">Create an event</a>
     <a href="/random_event">Random Event</a>
-    <h1>{{event_name}}</h1>
-    <p>{{date}} {{start_time}} until {{end_time}}</p>
+    <a href="/about">About</a>
+    <h2>{{event_name}}</h2>
+    <p>This event occurs on {{date}} {{start_time}} until {{end_time}}</p>
     <img src={{image_url}}>
     <p>Description: <br> <br> {{description}}</p> 
     Invite List: 
@@ -20,6 +23,6 @@
         {%endfor%}
     </ul>  
     <a href="/remove_event/{{event_id}}">Delete this event</a>
-    <a href="/">Return home</a>
+
 </body>
 </html>

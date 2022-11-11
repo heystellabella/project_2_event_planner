@@ -5,7 +5,7 @@ CREATE TABLE events (
     event_name TEXT,
     image_url TEXT,
     description TEXT,
-    date TIMESTAMP,
+    date date,
     start_time TIME,
     end_time TIME
     -- invite_list TEXT
