@@ -1,5 +1,3 @@
-
-
 body {
     background-color: rgb(252, 236, 198);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -14,9 +12,7 @@ img {
 #description_box {
     height: 200px;
     width: 700px;
-    white-space: pre wrap;
 }
-
 
 form {
     text-align: center;
@@ -30,8 +26,7 @@ a:hover {
     color: rgb(245, 170, 21);
 }
 
-
-ul, ol {
+ul {
     position: relative;
     display: block;
     text-align: center;
@@ -48,10 +43,9 @@ ul, ol {
 
 #event_name {
     font-weight: bolder;
-    font-display: ;
 }
 
-.invte_container {
+.invite_container {
     text-align: center;
 }
 

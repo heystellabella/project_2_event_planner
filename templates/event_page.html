@@ -21,9 +21,10 @@
     <p id="event_description_display"> {{description}}</p> 
     <p class="event_page_subheading">Invite List:</p>
     <div class="invite_container">   
-    <ul class="invite_list">{%for name in names%}
-        <li>{{name}}</li>
-    {%endfor%}
+    <ul class="invite_list">
+        {%for name in names%}
+            <li>{{name}}</li>
+        {%endfor%}
     </ul>  
     </div>
 
