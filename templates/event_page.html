@@ -13,15 +13,20 @@
     <a href="/create_event">Create an event</a>
     <a href="/random_event">Random Event</a>
     <a href="/about">About</a>
-    <h2>{{event_name}}</h2>
+    <h2 id="event_name">{{event_name}}</h2>
+    <p class="event_page_subheading">When is this cool event happening?</p>
     <p>This event occurs on {{date}} {{start_time}} until {{end_time}}</p>
     <img src={{image_url}}>
-    <p>Description: <br> <br> {{description}}</p> 
-    Invite List: 
-    <ul>{%for name in names%}
-            <li>{{name}}</li>
-        {%endfor%}
+    <p class="event_page_subheading">Description:</p>
+    <p id="event_description_display"> {{description}}</p> 
+    <p class="event_page_subheading">Invite List:</p>
+    <div class="invite_container">   
+    <ul class="invite_list">{%for name in names%}
+        <li>{{name}}</li>
+    {%endfor%}
     </ul>  
+    </div>
+
     <a href="/remove_event/{{event_id}}">Delete this event</a>
 
 </body>

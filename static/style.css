@@ -1,19 +1,7 @@
-/* .no {
-    background-color: red;
-    width: 50px;
-    height: 50px;
-    border-radius: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.no a {
-    text-decoration: none;
-} */
 
 body {
-    background-color: rgb(254, 252, 234);
+    background-color: rgb(252, 236, 198);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
 }
@@ -26,6 +14,7 @@ img {
 #description_box {
     height: 200px;
     width: 700px;
+    white-space: pre wrap;
 }
 
 
@@ -46,4 +35,27 @@ ul, ol {
     position: relative;
     display: block;
     text-align: center;
+}
+
+#event_description_display {
+    white-space: pre-wrap;
+}
+
+.event_page_subheading {
+    font-size: large;
+    font-weight: bold;
+}
+
+#event_name {
+    font-weight: bolder;
+    font-display: ;
+}
+
+.invte_container {
+    text-align: center;
+}
+
+.invite_list {
+    display: inline-block;
+    text-align: left;
 }
